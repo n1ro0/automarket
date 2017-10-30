@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for carad in carads %}
+        <section>
+            <img src="{{ carad.photo.url }}"/>
+            <lable>Title: </lable>
+            <a href="/carads/{{carad.id}}">{{carad.title}}</a><br/>
+            <lable>Model: </lable>
+            <lable>{{carad.model}}</lable><br/>
+            <lable>Brand: </lable>
+            <label>{{carad.brand}}</label><br/>
+            <label>Owner: </label>
+            <a href="/onwners/{{carad.owner.id}}">{{book.owner.name}} {{book.owner.surname}}</a><br/>
+            <label>Categories: </label>
+            <ul>
+                {% for category in carad.categories.all %}
+                    <li>
+                        <a href="/categories/">{{category.title}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="/carads/delete/{{carad.id}}" class="button">Delete</a>
+        </section>
+    {% endfor %}
+{% endblock %}

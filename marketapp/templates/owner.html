@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for owner in owners %}
+        <section>
+            <img class="caradphoto" src="{{ owner.photo.url }}"/>
+            <lable>Name: </lable>
+            <a href="/owners/{{author.id}}">{{owner.name}}</a><br/>
+            <lable>Surname: </lable>
+            <lable>{{owner.surname}}</lable><br/>
+        </section>
+    {% endfor %}
+{% endblock %}
