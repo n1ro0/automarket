@@ -26,6 +26,7 @@ SECRET_KEY = 'a#wjpcs2@u3!d(nze(%i=dw(y*f1_+))r+$-ehuxw=+pq*ux!l'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = "authapp.CustomUser"
 
 
 # Application definition
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'marketapp'
+    'marketapp',
+    'authapp'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +79,7 @@ WSGI_APPLICATION = 'automarketplace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'automarket_db',
+        'NAME': 'automarket_db', #automarket_db auth_db
         'USER' : 'automarketplace_user',
         'PASSWORD' : '12345687',
         'HOST' : '127.0.0.1',

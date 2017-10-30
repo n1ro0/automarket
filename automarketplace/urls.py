@@ -16,11 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from marketapp import views
+from authapp import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^signup/', auth_views.SignUpCreateView.as_view()),
+    url(r'^login/', auth_views.login_view),
+    url(r'^logout/', auth_views.logout_view),
     url(r'^$', views.index),
     url(r'^categories/$', views.CategoryListView.as_view(), name="categories"),
     url(r'^categories/detail/(?P<pk>\d+)/$', views.CategoryDetailView.as_view(), name="category_detail"),
