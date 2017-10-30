@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 
 from . import forms
@@ -7,14 +7,14 @@ from . import models
 
 #Book model------------------------------------------------------
 class CarAdListView(generic.ListView):
-    template_name = 'Carads.html'
+    template_name = 'carads.html'
     model = models.CarAd
     context_object_name = 'carads'
 
 
 class CarAdDetailView(generic.DetailView):
     template_name = 'carad.html'
-    model = models.Book
+    model = models.CarAd
     context_object_name = 'carad'
 
     def get_context_data(self, **kwargs):
@@ -63,7 +63,14 @@ class CategoryListView(generic.ListView):
 class CategoryDetailView(generic.ListView):
     template_name = 'category.html'
     model = models.Category
-    context_object_name = 'category'
+    # context_object_name = 'category'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(CategoryDetailView, self).get_context_data(**kwargs)
+        context['category'] = get_object_or_404(models.Category.objects.prefetch_related('carads'),
+                                                id=self.kwargs['pk'])
+        return context
 
 
 class CategoryCreateView(generic.CreateView):
@@ -106,3 +113,7 @@ class OfferCreateView(generic.CreateView):
     template_name = 'base_create.html'
     form_class = forms.OfferForm
     success_url = "/"
+
+
+def index(request):
+    return render(request, "index.html")

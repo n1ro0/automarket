@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^categories/$', views.CategoryListView.as_view(), name="categories"),
+    url(r'^categories/detail/(?P<pk>\d+)/$', views.CategoryDetailView.as_view(), name="category_detail"),
     url(r'^carads/$', views.CarAdListView.as_view(), name="carads"),
     url(r'^carads/detail/(?P<pk>\d+)/$', views.CarAdDetailView.as_view(), name="carad"),
     url(r'^carads/(?P<pk>\d+)/$', views.CarAdUpdateView.as_view(), name="carad_update"),
