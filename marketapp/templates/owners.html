@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for owner in owners %}
-        <section>
-            <img class="caradphoto" src="{{ owner.photo.url }}"/>
-            <lable>Name: </lable>
-            <a href="/owners/{{author.id}}">{{owner.name}}</a><br/>
-            <lable>Surname: </lable>
-            <lable>{{owner.surname}}</lable><br/>
-        </section>
-    {% endfor %}
+<div class="row">
+        {% for owner in owners %}
+        <div class="col-sm-6 col-md-4">
+           <div class="thumbnail">
+              <a class="thumbnail" href="/owners/{{ owner.id }}">
+                  <img src="{{ owner.photo.url }}" alt="404">
+              </a>
+                <div class="caption">
+                    <h3>{{owner.name}} {{owner.surname}}</h3>
+                    <p><a href="/owners/create" class="btn btn-primary" role="button">Add</a>
+                        <a href="/owners/delete/{{owner.id}}" class="btn btn-default" role="button">Delete</a>
+                    </p>
+                </div>
+           </div>
+        </div>
+        {% endfor %}
+</div>
 {% endblock %}

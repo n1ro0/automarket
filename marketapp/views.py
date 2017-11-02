@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import forms
 from . import models
@@ -95,16 +97,30 @@ class CategoryDeleteView(generic.DeleteView):
 
 
 #Author model------------------------------------------------------
-class OwnerListView(generic.ListView):
+class OwnerListView(LoginRequiredMixin, generic.ListView):
     template_name = 'owners.html'
     model = models.Owner
     context_object_name = 'owners'
 
 
+class OwnerCreateView(generic.CreateView):
+    template_name = 'owner_create.html'
+    form_class = forms.OwnerForm
+    success_url = '/owners/'
+
+
+
 class OwnerUpdateView(generic.UpdateView):
-    template_name = 'base_create.html'
+    template_name = 'owner_create.html'
     model = models.Owner
     form_class = forms.OwnerForm
+    success_url = '/owners/'
+
+
+
+class OwnerDeleteView(generic.DeleteView):
+    template_name = 'delete_conformation.html'
+    model = models.Owner
     success_url = '/owners/'
 
 
@@ -116,4 +132,22 @@ class OfferCreateView(generic.CreateView):
 
 
 def index(request):
-    return render(request, "index.html")
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    else:
+        return render(request, "index.html")
+
+class IndexView(generic.View):
+    template_name = "index.html"
+
+
+
+    # def get_context_data(self, **kwargs):
+    #     # Call the base implementation first to get a context
+    #     context = super(IndexView, self).get_context_data(**kwargs)
+    #     # Add in a QuerySet of all the books
+    #     #context['book'] = models.Book.objects.filter(id = self.kwargs['pk']).first()
+    #     context['carads_count'] = models.CarAd.objects.count()
+    #     context['owners_count'] = models.Owner.objects.count()
+    #     context['categories_count'] = models.Category.objects.count()
+    #     return context

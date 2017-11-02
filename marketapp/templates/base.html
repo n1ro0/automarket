@@ -3,23 +3,46 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Automarket</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap-theme.css' %}"/>
+    <script src="{% static 'jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/navigations.js' %}"></script>
     <link rel="stylesheet" href="{% static 'styles/basestyles.css' %}"/>
+
 </head>
 <body>
     <header>
+    <div class="contright">
     {% block header %}
+
+            {% if user.is_authenticated %}
+
+            <lable>Welcome, {{ user.username }}. </lable>
+                <a href="#"><span class="glyphicon glyphicon-user"></span></a>
+                <a href="/signout/"><span class="glyphicon glyphicon-log-out"></span></a>
+
+            {% else %}
+
+             <lable>Welcome, new user. Please log in. </lable>
+                <a href="/signup/">Sign up </a>
+                <a href="/signin/"><span class="glyphicon glyphicon-log-in"></span></a>
+
+
+            {% endif %}
+
     {% endblock %}
+    </div>
     </header>
-    <nav>
+    <nav class="navbar navbar-inverse">
     {% block nav %}
-        <p class="navigation">
-            <a href="/carads/">CarAds</a>
-            <a href="/categories/">Categories</a>
-            <a href="/owners/">Owners</a>
-            <a href="/signup/">Sign up</a>
-            <a>Sign in</a>
-        </p>
+        <ul class="nav nav-pills" role="tablist">
+              <li role="presentation" class="active"><a href="/carads/">CarAds <span class="badge">{{ carads_count }}</span></a></li>
+              <li role="presentation"><a href="/categories/">Categories <span class="badge">{{ categories_count }}</span></a></li>
+              <li role="presentation"><a href="/owners/">Owners <span class="badge">{{ owners_count }}</span></a></li>
+        </ul>
     {% endblock %}
     </nav>
     <article>
@@ -30,5 +53,6 @@
     {% block footer %}
     {% endblock %}
     </footer>
+
 </body>
 </html>

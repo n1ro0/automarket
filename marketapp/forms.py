@@ -8,19 +8,20 @@ class CategoryForm(forms.ModelForm):
         fields = '__all__'
 
 
+
 class OwnerForm(forms.ModelForm):
     class Meta:
-        model = models.Category
+        model = models.Owner
         fields = '__all__'
 
 
 class CarAdForm(forms.ModelForm):
     class Meta:
-        model = models.Category
+        model = models.CarAd
         fields = '__all__'
 
 
 class OfferForm(forms.ModelForm):
     class Meta:
-        model = models.Category
+        model = models.Offer
         fields = '__all__'
