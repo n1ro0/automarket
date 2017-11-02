@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'automarketplace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'automarket_db', #automarket_db auth_db
-        'USER' : 'automarket_user',
-        'PASSWORD' : 'qw123456',
+        'NAME': 'auto3_db', #'automarket_db'
+        'USER' : 'auto_user', #'automarket_user'
+        'PASSWORD' : '123456qw',
         'HOST' : '127.0.0.1',
         'PORT' : '5432',
     }
@@ -124,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 LOGIN_URL = '/signin/'
-LOGIN_REDIRECT_URL = '/owners'
+LOGIN_REDIRECT_URL = '/owners/'
 LOGOUT_REDIRECT_URL = '/'
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

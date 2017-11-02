@@ -1,0 +1,1 @@
+[{"model": "marketapp.owner", "pk": 1, "fields": {"name": "owner1", "surname": "owner1", "photo": "ownerphotos/default.png"}}, {"model": "marketapp.owner", "pk": 2, "fields": {"name": "ilyddd", "surname": "surname", "photo": "ownerphotos/default.png"}}, {"model": "marketapp.owner", "pk": 3, "fields": {"name": "7657", "surname": "657567", "photo": "ownerphotos/default.png"}}]

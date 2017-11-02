@@ -137,8 +137,10 @@ def index(request):
     else:
         return render(request, "index.html")
 
-class IndexView(generic.View):
+
+class IndexView(LoginRequiredMixin, generic.View):
     template_name = "index.html"
+    model = models.Owner
 
 
 
