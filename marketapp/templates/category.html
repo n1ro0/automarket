@@ -3,25 +3,34 @@
 <lable>Category Title: </lable>
 <lable>{{category.title}}</lable><br/>
     {% for carad in category.carads.all %}
-        <section>
-            <img src="{{ carad.photo.url }}"/>
-            <lable>Title: </lable>
-            <a href="/carads/{{carad.id}}">{{carad.title}}</a><br/>
-            <lable>Model: </lable>
-            <lable>{{carad.model}}</lable><br/>
-            <lable>Brand: </lable>
-            <label>{{carad.brand}}</label><br/>
-            <label>Owner: </label>
-            <a href="/onwners/{{carad.owner.id}}">{{book.owner.name}} {{book.owner.surname}}</a><br/>
-            <label>Categories: </label>
-            <ul>
-                {% for category in carad.categories.all %}
-                    <li>
-                        <a href="/categories/">{{category.title}}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <a href="/carads/delete/{{carad.id}}" class="button">Delete</a>
-        </section>
+       <div class="col-sm-6 col-md-4">
+           <div class="thumbnail">
+              <a class="thumbnail" href="/carads/{{ carad.id }}">
+                  <img src="{{ carad.photo.url }}" alt="404">
+              </a>
+                <div class="caption">
+                    <h3><lable>Title: </lable>
+                        <a href="/carads/{{carad.id}}">{{carad.title}}</a></h3>
+                    <p> <lable>Model: </lable>
+                        <lable>{{carad.model}}</lable><br/>
+                        <lable>Brand: </lable>
+                        <label>{{carad.brand}}</label><br/>
+                        <label>Owner: </label>
+                        <a href="/owners/{{carad.owner.id}}">{{carad.owner.name}} {{carad.owner.surname}}</a><br/>
+                        <label>Categories: </label>
+                        <ul>
+                            {% for category in carad.categories.all %}
+                                <li>
+                                    <a href="/categories/">{{category.title}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    <p>
+                        <a href="/carads/delete/{{carad.id}}" class="btn btn-default" role="button">Delete</a>
+                    </p>
+                </div>
+           </div>
+        </div>
     {% endfor %}
 {% endblock %}

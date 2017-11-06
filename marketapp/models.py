@@ -24,7 +24,7 @@ class CarAd(models.Model):
     owner = models.ForeignKey(Owner)
     prize = models.PositiveIntegerField()
     categories = models.ManyToManyField(Category, related_name="carads")
-    photo = models.ImageField(default="ownerphotos/default.png", upload_to="ownerphotos")
+    photo = models.ImageField(default="carphotos/default.jpg", upload_to="carphotos")
 
     def __str__(self):
         return self.title

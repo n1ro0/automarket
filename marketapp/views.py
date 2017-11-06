@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import generic
+from django.views import generic, View
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -52,7 +52,7 @@ class CarAdDeleteView(generic.DeleteView):
     template_name = 'delete_conformation.html'
     success_message = "Deleted Successfully"
     model = models.CarAd
-    success_url = '/CarAds/'
+    success_url = '/carads/'
 
 
 #Category model------------------------------------------------------
@@ -139,9 +139,10 @@ def index(request):
 
 
 class IndexView(LoginRequiredMixin, generic.View):
-    template_name = "index.html"
-    model = models.Owner
 
+
+    def get(self, request, *args, **kwargs):
+        return render(request, template_name="index.html")
 
 
     # def get_context_data(self, **kwargs):
