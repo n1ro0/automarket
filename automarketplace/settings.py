@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'automarketplace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'automarket_db' , #'auto3_db'
-        'USER' : 'automarket_user', #'auto_user'
-        'PASSWORD' : 'qw123456',
+        'NAME': 'auto3_db' , #'automarket_db'
+        'USER' : 'auto_user', #'automarket_user'
+        'PASSWORD' : '123456qw',
         'HOST' : '127.0.0.1',
         'PORT' : '5432',
     }
