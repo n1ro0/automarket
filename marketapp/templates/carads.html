@@ -14,12 +14,12 @@
                         <lable>Brand: </lable>
                         <label>{{carad.brand}}</label><br/>
                         <label>Owner: </label>
-                        <a href="/owners/{{carad.owner.id}}">{{carad.owner.name}} {{carad.owner.surname}}</a><br/>
+                        <a href="/owners/detail/{{carad.owner.id}}">{{carad.owner.name}} {{carad.owner.surname}}</a><br/>
                         <label>Categories: </label>
                         <ul>
                             {% for category in carad.categories.all %}
                                 <li>
-                                    <a href="/categories/">{{category.title}}</a>
+                                    <a href="/categories/{{ category.id }}">{{category.title}}</a>
                                 </li>
                             {% endfor %}
                         </ul>

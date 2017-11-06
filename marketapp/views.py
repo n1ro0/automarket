@@ -62,10 +62,9 @@ class CategoryListView(generic.ListView):
     context_object_name = 'categories'
 
 
-class CategoryDetailView(generic.ListView):
+class CategoryDetailView(generic.DetailView):
     template_name = 'category.html'
     model = models.Category
-    # context_object_name = 'category'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -103,6 +102,11 @@ class OwnerListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'owners'
 
 
+class OwnerDetailView(generic.DetailView):
+    template_name = 'owner.html'
+    model = models.Owner
+
+
 class OwnerCreateView(generic.CreateView):
     template_name = 'owner_create.html'
     form_class = forms.OwnerForm
@@ -130,6 +134,8 @@ class OfferCreateView(generic.CreateView):
     form_class = forms.OfferForm
     success_url = "/"
 
+class IndexView(generic.TemplateView):
+    template_name = "index.html"
 
 def index(request):
     if not request.user.is_authenticated:
@@ -138,8 +144,7 @@ def index(request):
         return render(request, "index.html")
 
 
-class IndexView(LoginRequiredMixin, generic.View):
-
+class IndexView1(LoginRequiredMixin, generic.View):
 
     def get(self, request, *args, **kwargs):
         return render(request, template_name="index.html")

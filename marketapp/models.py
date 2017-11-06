@@ -14,7 +14,7 @@ class Owner(models.Model):
     photo = models.ImageField(default="ownerphotos/default.png", upload_to="ownerphotos")
 
     def __str__(self):
-        return self.name
+        return '{} {}'.format(self.name, self.surname)
 
 
 class CarAd(models.Model):

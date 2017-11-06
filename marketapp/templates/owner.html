@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-        {% for owner in owners %}
+    <div class="col-sm-3 col-md-4">
+    </div>
         <div class="col-sm-6 col-md-4">
            <div class="thumbnail">
               <a class="thumbnail" href="/owners/{{ owner.id }}">
@@ -13,8 +14,6 @@
                 </div>
            </div>
         </div>
-        {% endfor %}
-    <div class="col-sm-2 col-md-1">
-            <p><a href="/owners/create" class="btn btn-primary" role="button">Add</a></p>
-     </div>
+     <div class="col-sm-3 col-md-4">
+    </div>
 {% endblock %}

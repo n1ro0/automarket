@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<lable>Category Title: </lable>
-<lable>{{category.title}}</lable><br/>
+<div class="ol-sm-12 col-md-12 h1div">
+    <h1>{{category.title}}</h1>
+</div>
     {% for carad in category.carads.all %}
        <div class="col-sm-6 col-md-4">
            <div class="thumbnail">
